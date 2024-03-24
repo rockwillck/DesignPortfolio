@@ -1,4 +1,4 @@
-# Lenoir
+# Made with Lenoir
 A modern, concise web development toolkit
 ## A (Very) Brief History
 Lenoir is named after the first engine with a sparkplug. Lenoir was created for use by my web development agency, Sparkplug.Page. I am clever. Lenoir was written in a weekend and is currently being expanded, with documentation being... appropriately procrastinated upon. Cheers!  
