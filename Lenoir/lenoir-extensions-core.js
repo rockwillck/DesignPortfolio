@@ -17,7 +17,7 @@ LenoirExtensions.registerComponentType("header", heading)
 
 function spacing(height) {
     let s = document.createElement("div")
-    s.style.height = `${height[0]}px`
+    s.style.height = `${height[0]/LenoirAssistant.sections*100}vw`
     return s
 }
 LenoirExtensions.registerComponentType("spacer", spacing)
@@ -32,20 +32,26 @@ function image(src) {
 LenoirExtensions.registerComponentType("image", image)
 
 function link(src) {
-    let a = document.createElement("A")
+    let a = document.createElement("a")
     a.innerText = src[0]
     a.href = src[1]
     return a
 }
 LenoirExtensions.registerComponentType("link", link)
 
+function raw(args) {
+    let div = document.createElement("div")
+    div.innerHTML = args[0]
+    return div
+}
+LenoirExtensions.registerComponentType("raw", raw)
+
 function mdrenderer(args) {
     markdown = args[0]
-    markdown = markdown.split("\n").map((x) => x.trim()).join("\n")
+    markdown = markdown.split("\n").map((x) => x.trim()).join("<br>")
     const result = document.createElement('div');
     result.className = "markdown"
     result.style.textAlign = args.length > 1 ? args[1] : "center"
-    let currentElement = result;
 
     let boldRegex = /\*\*(.*?)\*\*/g;
     let italicRegex = /\*(.*?)\*/g;
@@ -60,7 +66,6 @@ function mdrenderer(args) {
     markdown = markdown.replace(codeBlockRegex, (_, language, code) => {
         return `<pre><code class="${language}">${code}</code></pre>`
     });
-    console.log(markdown)
 
     // Replace bold, italic, and inline code
     markdown = markdown.replace(boldRegex, boldReplace)
