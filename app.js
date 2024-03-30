@@ -22,16 +22,15 @@ const fetchCSV = async () => {
 
 function process(csvData) {
    rowsSplit = csvData.split("\n")
-   for (url of rowsSplit[0].split(",")) {
-    part1.appendComponent(new Component("image", url))
+   for (let i = 0; i < rowsSplit.length(); i++) {
+    let imageLinks = rowsSplit[i].split(",")
+    part1.appendComponent(new Component("image", imageLinks[0]))
     part1.appendComponent(new Component("spacer", 1))
-   }
-   for (url of rowsSplit[1].split(",")) {
-    part2.appendComponent(new Component("image", url))
+    
+    part2.appendComponent(new Component("image", imageLinks[1]))
     part2.appendComponent(new Component("spacer", 1))
-   }
-   for (url of rowsSplit[2].split(",")) {
-    part3.appendComponent(new Component("image", url))
+    
+    part3.appendComponent(new Component("image", imageLinks[2]))
     part3.appendComponent(new Component("spacer", 1))
    }
 }
