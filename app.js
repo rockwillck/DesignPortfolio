@@ -22,7 +22,7 @@ const fetchCSV = async () => {
 
 function process(csvData) {
    rowsSplit = csvData.split("\n")
-   for (let i = 0; i < rowsSplit.length(); i++) {
+   for (let i = 0; i < rowsSplit.length; i++) {
     let imageLinks = rowsSplit[i].split(",")
     part1.appendComponent(new Component("image", imageLinks[0]))
     part1.appendComponent(new Component("spacer", 1))
